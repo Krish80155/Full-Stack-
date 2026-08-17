@@ -1,0 +1,72 @@
+function TaskCard({
+    task,
+    onToggle,
+    onDelete,
+    onEdit
+}) {
+    return (
+        <article
+            className={`task ${
+                task.completed ? "completed" : ""
+            }`}
+        >
+            {/* Task Information */}
+            <div className="task-content">
+
+                <h3>{task.title}</h3>
+
+                {task.description && (
+                    <p>{task.description}</p>
+                )}
+
+                <small>
+                    ID: {task.id}
+                </small>
+
+                <p className="task-status">
+                    Status:{" "}
+                    {task.completed
+                        ? "Completed"
+                        : "Pending"}
+                </p>
+
+            </div>
+
+            {/* Task Actions */}
+            <div className="actions">
+
+                {/* Complete / Undo */}
+                <button
+                    type="button"
+                    className="complete-button"
+                    onClick={() => onToggle(task)}
+                >
+                    {task.completed
+                        ? "Undo"
+                        : "Complete"}
+                </button>
+
+                {/* Edit */}
+                <button
+                    type="button"
+                    className="edit-button"
+                    onClick={() => onEdit(task)}
+                >
+                    Edit
+                </button>
+
+                {/* Delete */}
+                <button
+                    type="button"
+                    className="delete-button"
+                    onClick={() => onDelete(task.id)}
+                >
+                    Delete
+                </button>
+
+            </div>
+        </article>
+    );
+}
+
+export default TaskCard;

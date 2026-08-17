@@ -1,0 +1,696 @@
+/* =========================================
+   GLOBAL
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    color: #111827;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+/* =========================================
+   APP
+========================================= */
+
+.app {
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    padding: 40px 20px;
+    text-align: center;
+    background: #111827;
+    color: white;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+.header p {
+    margin: 10px 0 0;
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+========================================= */
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #fecaca;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card h3 {
+    margin: 0 0 10px;
+    color: #4b5563;
+    font-size: 17px;
+}
+
+.stat-card strong {
+    font-size: 32px;
+    color: #111827;
+}
+
+
+/* =========================================
+   ADD TASK FORM
+========================================= */
+
+.task-form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.task-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   COMMON FORM
+========================================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+
+/* =========================================
+   ADD TASK BUTTON
+========================================= */
+
+.task-form form button {
+    background: #2563eb;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: background 0.2s ease;
+}
+
+.task-form form button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================================
+   EDIT FORM
+========================================= */
+
+.edit-form {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border: 2px solid #2563eb;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+.edit-form h2 {
+    margin: 0 0 20px;
+    color: #111827;
+}
+
+.edit-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.edit-form input,
+.edit-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.edit-form input:focus,
+.edit-form textarea:focus {
+    border-color: #2563eb;
+}
+
+.edit-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+
+/* =========================================
+   EDIT ACTIONS
+========================================= */
+
+.edit-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.save-button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.save-button:hover {
+    background: #1d4ed8;
+}
+
+.cancel-button {
+    background: #6b7280;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.cancel-button:hover {
+    background: #4b5563;
+}
+
+
+/* =========================================
+   TASKS CONTAINER
+========================================= */
+
+.tasks {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tasks h2 {
+    margin-top: 0;
+}
+
+
+/* =========================================
+   TASK HEADER
+========================================= */
+
+.tasks-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tasks-header h2 {
+    margin: 0;
+}
+
+
+/* =========================================
+   SEARCH + FILTERS
+========================================= */
+
+.task-controls {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.task-controls input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.task-controls input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+
+/* =========================================
+   FILTER BUTTONS
+========================================= */
+
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filters button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #e5e7eb;
+    color: #111827;
+    font-size: 15px;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.filters button:hover {
+    background: #d1d5db;
+}
+
+.filters button.active {
+    background: #2563eb;
+    color: white;
+}
+
+
+/* =========================================
+   TASK LIST
+========================================= */
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   TASK CARD
+========================================= */
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px;
+    margin-top: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: white;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.task:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================
+   TASK CONTENT
+========================================= */
+
+.task-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-content h3 {
+    margin: 0 0 8px;
+    font-size: 21px;
+    word-break: break-word;
+}
+
+.task-content p {
+    margin: 5px 0;
+    color: #4b5563;
+    word-break: break-word;
+}
+
+.task-content small {
+    display: block;
+    margin-top: 5px;
+    color: #9ca3af;
+}
+
+
+/* =========================================
+   TASK STATUS
+========================================= */
+
+.task-status {
+    font-size: 14px;
+    color: #6b7280 !important;
+}
+
+
+/* =========================================
+   COMPLETED TASK
+========================================= */
+
+.completed {
+    opacity: 0.6;
+    background: #f9fafb;
+}
+
+.completed h3 {
+    text-decoration: line-through;
+}
+
+
+/* =========================================
+   TASK ACTIONS
+========================================= */
+
+.actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    padding: 10px 18px;
+    border: none;
+    border-radius: 7px;
+    color: white;
+    font-size: 15px;
+    transition:
+        opacity 0.2s ease,
+        transform 0.1s ease;
+}
+
+.actions button:hover {
+    opacity: 0.85;
+}
+
+.actions button:active {
+    transform: scale(0.97);
+}
+
+
+/* =========================================
+   COMPLETE BUTTON
+========================================= */
+
+.complete-button {
+    background: #16a34a;
+    color: white;
+}
+
+.complete-button:hover {
+    background: #15803d;
+}
+
+
+/* =========================================
+   EDIT BUTTON
+========================================= */
+
+.edit-button {
+    background: #f59e0b;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #d97706;
+}
+
+
+/* =========================================
+   DELETE BUTTON
+========================================= */
+
+.delete-button {
+    background: #dc2626;
+    color: white;
+}
+
+.delete-button:hover {
+    background: #b91c1c;
+}
+
+
+/* =========================================
+   NO TASKS
+========================================= */
+
+.no-tasks {
+    text-align: center;
+    padding: 30px 10px;
+    color: #6b7280;
+    font-size: 16px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.tasks > p {
+    color: #6b7280;
+}
+
+
+/* =========================================
+   BUTTON FOCUS
+========================================= */
+
+button:focus-visible {
+    outline: 3px solid rgba(37, 99, 235, 0.35);
+    outline-offset: 2px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 700px) {
+
+    /* Header */
+
+    .header {
+        padding: 30px 15px;
+    }
+
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .header p {
+        font-size: 14px;
+    }
+
+
+    /* Main */
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+
+    /* Dashboard */
+
+    .dashboard {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+
+    /* Forms */
+
+    .task-form,
+    .edit-form,
+    .tasks {
+        padding: 20px;
+    }
+
+
+    /* Task */
+
+    .task {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+
+
+    /* Actions */
+
+    .actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .actions button {
+        flex: 1;
+        min-width: 90px;
+    }
+
+
+    /* Filters */
+
+    .filters {
+        width: 100%;
+    }
+
+    .filters button {
+        flex: 1;
+    }
+
+
+    /* Edit buttons */
+
+    .edit-actions {
+        flex-direction: column;
+    }
+
+    .edit-actions button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 420px) {
+
+    .header h1 {
+        font-size: 24px;
+    }
+
+    main {
+        width: 96%;
+    }
+
+    .task-form,
+    .edit-form,
+    .tasks {
+        padding: 16px;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card strong {
+        font-size: 28px;
+    }
+
+    .task-content h3 {
+        font-size: 19px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .actions button {
+        width: 100%;
+        flex: none;
+    }
+
+    .filters {
+        flex-direction: column;
+    }
+
+    .filters button {
+        width: 100%;
+        flex: none;
+    }
+}
